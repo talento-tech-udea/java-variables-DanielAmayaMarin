@@ -1,5 +1,6 @@
 import org.talento.tech.*;
 
+import java.net.URISyntaxException;
 import java.util.List;
 
 /**
@@ -15,35 +16,45 @@ public class PerimeterCalculator {
 
     public double calculatePerimeter(Shape s) {
         // Definir la variable que acumule el perimetro
+        double perimetro = 0;
 
         List<Point> points = s.getPoints();
         Point prevPoint = points.getLast();
 
         for (Point point : points) {
             // Obtener la distancia de los lados
+            double distancia = prevPoint.distancia(point);
             // Ayuda: prevPoint.distancia(point)
-
+            perimetro += distancia;
             prevPoint = point;
         }
 
         // Retornar la variable del perimetro
+        return perimetro;
     }
 
     public int getTotalPoints(Shape s) {
         // Definir la variable para el total de puntos
+        int totalPuntos = 0;
+
         for(Point point: s.getPoints()) {
             // Acumular el total de puntos
+            totalPuntos++;
         }
 
         // Retornas el valor de puntos
+        return totalPuntos;
     }
 
-    public static void main (String[] args) {
+    public static void main (String[] args) throws URISyntaxException {
         PerimeterCalculator perimeterCalculator = new PerimeterCalculator();
         // Definit el nombre del archivo
+        String nombre = "square.txt";
         Shape shape = new Shape();
 
-        shape.readPoints("nombre_archivo");
+        shape.readPoints(nombre);
+
         // Mostrar el valor de calculatePerimeter y getTotalPoints
+
     }
 }
